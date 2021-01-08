@@ -43,6 +43,8 @@ router.delete('/comentarios', (req, res) => {
 //     res.send('Hola Mundo')
 // });
 
+app.use('/app', express.static('public'))
+
 app.listen(3000);
 
 console.log('Escuchando en http://localhost:3000');
