@@ -21,13 +21,42 @@ function addMessage(user, message) {
     })
 }
 
-function getMessages() {
+function getMessages(filteredUser) {
     return new Promise((resolve, reject) => {
-        resolve(store.list())
+        resolve(store.list(filteredUser))
+    })
+}
+
+function updateMessage(id, message) {
+    return new Promise(async(resolve, reject) => {
+        if(!id || !message) {
+            return reject('Invalid data')
+        }
+
+        const result = await store.update(id, message)
+        resolve(result)
+    })
+}
+
+function deleteMessage(id) {
+    return new Promise(async(resolve, reject) => {
+        if(!id) {
+            return reject('Invalid data')
+        }
+
+        store.delete(id)
+            .then(() => {
+                resolve()
+            })
+            .catch(error => {
+                console.error(error)
+            })
     })
 }
 
 module.exports =  {
     addMessage,
-    getMessages
+    getMessages,
+    updateMessage,
+    deleteMessage
 }
