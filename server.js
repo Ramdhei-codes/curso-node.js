@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 
 router(app)
 
-app.use('/app', express.static('public'))
+app.use('/', express.static('public'))
 
 server.listen(3000, function() {
     console.log('Escuchando en http://localhost:3000');
