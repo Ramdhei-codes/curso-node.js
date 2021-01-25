@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyFile</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>SocketIO</title>
+    <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
-    <h1>This is a static file I'm serving from Node</h1>
+    <h1>Mira la consola</h1>
+    <script>
+        const socket = io.connect('http://localhost:3000', {
+            forceNew: true
+        })
+
+        socket.on('message', function(data) {
+            console.log(data)
+        })
+    </script>
 </body>
 </html>

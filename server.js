@@ -1,4 +1,7 @@
 const express = require('express');
+const app = express();
+const socket = require('./socket')
+const server = require('http').Server(app)
 const bodyParser = require('body-parser')
 const db = require('./db')
 
@@ -8,14 +11,14 @@ const router = require('./network/routes');
 
 db(uri)
 
+socket.connect(server)
 
-const app = express();
 app.use(bodyParser.json())
 
 router(app)
 
 app.use('/app', express.static('public'))
 
-app.listen(3000);
-
-console.log('Escuchando en http://localhost:3000');
+server.listen(3000, function() {
+    console.log('Escuchando en http://localhost:3000');
+});
