@@ -12,7 +12,8 @@ const messageSchema = new Schema({
         ref: 'User'
     },
     message: String,
-    date: Date
+    date: Date,
+    file: String
 })
 
 const model = mongoose.model('Message', messageSchema)
