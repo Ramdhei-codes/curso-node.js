@@ -1,6 +1,7 @@
 const express = require('express')
 const multer = require('multer')
 const path = require('path')
+const config = require('../../config')
 
 const router = express.Router()
 const response = require('../../network/response')
@@ -8,7 +9,7 @@ const controller = require('./controller')
 
 
 const upload = multer({
-    dest: 'public/files/'
+    dest: `public/${config.filesRoute}/`
 })
 
 router.get('/', (req, res) => {

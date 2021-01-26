@@ -6,7 +6,7 @@ function getChats(userId) {
 
 function addChat(usersIdsArray) {
     return new Promise(async(resolve, reject) => {
-        if(usersIdsArray.length <= 1) {
+        if(usersIdsArray.length <= 1 || Array.isArray(usersIdsArray)) {
             return reject('There must be two or more members in a chat')
         }
 
